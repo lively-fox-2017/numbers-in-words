@@ -1,14 +1,16 @@
 function numberToWords(number) {
   // Your code here
   var angka =   ['','satu ','dua ' ,'tiga ','empat ' ,'lima ','enam ' ,'tujuh ','delapan ','sembilan '];
-  var unit = ['','','puluh','ratus','ribu','puluh ribu' , 'ratus ribu' ,'juta' ,'puluh juta' ,'ratus juta','milyar' , 'puluh milyar' ,'ratus milyar' ,'triliun','puluh triliun','ratus triliun']
+  var unit = ['','','puluh','ratus','ribu','puluh ribu' , 'ratus ribu' ,'juta' ,'puluh juta' ,'ratus juta','milyar' , 'puluh milyar' ,'ratus milyar' ,'triliun','puluh triliun','ratus triliun'];
   var sebut='';
 
   var numS = number.toString() ;
   var satuan = numS.length;
 
 
-  sebut = angka[Number(numS[0])] + unit[satuan] + ' ' ;
+    sebut = angka[Number(numS[0])] + unit[satuan] + ' ' ;
+
+
 
   if (numS.length==1){
     return sebut.trim();
@@ -44,14 +46,25 @@ function numberToWords(number) {
     for (var u=0 ; u < ubah.length ; u++){
       sebut = sebut.replace('satu ' + ubah[u], 'se' + ubah[u]);
     }
-    return  sebut.trim();
+
+    var special = [ 'ribu','juta','milyar','triliun']; //special case angka 11
+    for (var u=0 ; u < special.length ; u++){
+      sebut = sebut.replace('sepuluh '+ special[u] + ' se' + special[u] , 'sebelas ' + special[u]);
+    }
+
+
+    return  sebut.trim() ;
   }
+
+
 
 }
 
 // Driver code
 console.log(numberToWords(1000000));
 console.log(numberToWords(123000));
+console.log(numberToWords(111111111111));
+console.log(numberToWords(1230000110));
 console.log(numberToWords(999000000000000));
 
 module.exports = {
