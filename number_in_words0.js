@@ -1,28 +1,6 @@
 function numberToWords(number) {
   // Your code here
-  if(number >= 200000) {
-    return numberToWords(parseInt(number / 1000)) + 'ribu' + numberToWords(number % 1000)
-  }
 
-  if(number >= 100000) {
-    return 'seratus ribu' + numberToWords(parseInt(number % 100000))
-  }
-
-  if(number >= 20000) {
-    return numberToWords(parseInt(number / 1000)) + 'ribu' + numberToWords(number % 1000)
-  }
-
-  if(number >= 10000) {
-    return 'sepuluh ribu' + numberToWords(parseInt(number % 10000))
-  }
-
-  if(number >= 2000) {
-    return numberToWords(parseInt(number / 1000)) + 'ribu' + numberToWords(number % 1000)
-  }
-
-  if(number >= 1000) {
-    return 'seribu' + numberToWords(parseInt(number % 1000))
-  }
 
   if(number >= 200) {
     return numberToWords(parseInt(number / 100)) + ' ratus ' + numberToWords(number % 100)
@@ -60,7 +38,7 @@ function numberToWords(number) {
 }
 
 // Driver code
-console.log(numberToWords(255));
+console.log(numberToWords(999));
 
 module.exports = {
   numberToWords: numberToWords
