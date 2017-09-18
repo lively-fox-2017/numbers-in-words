@@ -231,7 +231,7 @@ function numberToWords(number) {
 
 // Driver code
 console.log(numberToWords(999999999999999));
-//
-// module.exports = {
-//   numberToWords: numberToWords
-// }
+
+ module.exports = {
+   numberToWords: numberToWords
+ }
