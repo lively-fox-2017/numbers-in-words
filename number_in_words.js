@@ -1,5 +1,6 @@
 function numberToWords(number) {
   let literal = {
+    '0': '',
     '1': 'Satu',
     '2': 'Dua',
     '3': 'Tiga',
@@ -36,7 +37,7 @@ function numberToWords(number) {
 }
 
 // Driver code
-console.log(numberToWords(999999999999999));
+console.log(numberToWords(999999999999000));
 
 module.exports = {
   numberToWords: numberToWords
