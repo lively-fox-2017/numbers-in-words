@@ -1,0 +1,13 @@
+{
+  "name": "source",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^3.2.0"
+  },
+  "scripts": {
+    "start": "node number_in_words.js",
+    "test": "mocha number_in_words.test.js"
+  }
+}
