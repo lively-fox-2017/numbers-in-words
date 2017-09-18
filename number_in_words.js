@@ -59,15 +59,33 @@ function numberToWords(number) {
   		return numberToWords(temp)+' Miliyar '+numberToWords(number-(temp*1000000));
   	}
 
-  	if(number>=1000000000000 && number<1000000000000000){
+  	if(number>=1000000000000 && number<=11000000000000){
   		temp=Math.floor(number/1000000000000);
 
-  		return temp.toString()+' Triliun '+numberToWords(number-(temp*1000000000000));
-  	}  	
+  		return angka[temp.toString()]+' Triliun '+numberToWords(number-(temp*1000000000000));
+  	}
+
+  	if(number>11000000000000 && number<20000000000000){
+  		
+  		temp=Math.floor(number/1000000000000);
+  		return numberToWords(temp)+' triliun ' +numberToWords(number-(Math.floor(temp*1000000000000)));
+  	}
+
+  	if(number>=20000000000000 && number <100000000000000){
+  		temp=Math.floor(number/1000000000000);
+  		return numberToWords(temp)+' triliun ' +numberToWords(number-(Math.floor(temp*1000000000000)));
+  	}
+
+  	if(number>=100000000000000 && number <1000000000000000){
+  		temp=Math.floor(number/1000000000000);
+  		return numberToWords(temp)+' triliun ' +numberToWords(number-(Math.floor(temp*1000000000000)));
+  	}
+
+
 }
 
 // Driver code
-console.log(numberToWords(164));
+console.log(numberToWords(999999999999999));
 //9000.000.000.000
 module.exports = {
   numberToWords: numberToWords
