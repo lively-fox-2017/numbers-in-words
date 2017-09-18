@@ -24,13 +24,16 @@ function numberToWords(number) {
     if(number > 20 && number < 100 && parseInt(pisah[0]) === arr[i][0]){
       hasil = arr[i][1] + " puluh " + arr[pisah[1]-1][1]
     }
+    if(number > 100 && number < 1000 && parseInt(pisah[0]) === arr[i][0]){
+      hasil = arr[i][1] + " ratus " + arr[pisah[1]-1][1] + " puluh " + arr[pisah[2]-1][1];
+    }
   }
   return hasil
 }
 
 // Driver code
 // console.log(numberToWords(1000000));
-console.log(numberToWords(54))
+console.log(numberToWords(451))
 
 module.exports = {
   numberToWords: numberToWords
