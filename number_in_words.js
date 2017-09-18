@@ -34,24 +34,7 @@ function numberToWords(number) {
 }
 
 // Driver code
-console.log(numberToWords(1));
-console.log(numberToWords(10));
-console.log(numberToWords(11));
-console.log(numberToWords(20));
-console.log(numberToWords(100));
-console.log(numberToWords(211));
-console.log(numberToWords(1000));
-console.log(numberToWords(11000));
-console.log(numberToWords(111000));
-console.log(numberToWords(1111000));
-console.log(numberToWords(1001));
-console.log(numberToWords(5001));
-console.log(numberToWords(51000));
 console.log(numberToWords(1000000));
-console.log(numberToWords(1000000000000));
-console.log(numberToWords(1234567897524));
-console.log(numberToWords(1111111111));
-console.log(numberToWords(1111111111111));
 
 module.exports = {
   numberToWords: numberToWords
