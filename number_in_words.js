@@ -43,13 +43,16 @@ function numberToWords(number) {
   };
   var jawab = '';
   for (var prop in angka) {
-
-    while (number >= angka[prop]){
+    if (number === 0){
+      return jawab;
+    }
+    else if (number >= angka[prop]){
       jawab += prop;
-      number -= angka[prop];
+      number -= angka[prop]
+      // console.log(result);
+      return jawab + numberToWords(number);
     }
   }
-  return jawab;
 }
 
 // Driver code
@@ -61,4 +64,4 @@ console.log(numberToWords(13));
 
 module.exports = {
   numberToWords: numberToWords
-}
+};
