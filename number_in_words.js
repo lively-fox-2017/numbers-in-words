@@ -97,8 +97,33 @@ function numberToWords(number) {
 		var kalimat = numberToWords(depan) + ' Milyar '+ numberToWords(belakang);
 	}
 	// ===========================1 TRILIUN===========================
-	else if(number == 1000000000000){
-		var kalimat = 'Satu Triliun'
+	else if(number < 10000000000000){
+		var utama = number/10000000000;
+		var depan = parseInt(String(utama).substr(0,1));
+		var belakang = number%10000000000;
+		var kalimat = numberToWords(depan) + ' Triliun '+ numberToWords(belakang);
+	}
+	// ===========================1-99 TRILIUN===========================
+	else if(number < 100000000000000){
+		var utama = number/100000000000;
+		var depan = parseInt(String(utama).substr(0,2));
+		// console.log(depan);
+		var belakang = number%1000000000000;
+		// console.log(belakang);
+		var kalimat = numberToWords(depan) + ' Triliun '+ numberToWords(belakang);
+	}
+	// ===========================100-999 TRILIUN===========================
+	else if(number < 1000000000000000){
+		var utama = number/1000000000000;
+		var depan = parseInt(String(utama).substr(0,3));
+		// console.log(depan);
+		var belakang = number%1000000000000;
+		// console.log(belakang);
+		var kalimat = numberToWords(depan) + ' Triliun '+ numberToWords(belakang);
+	}
+	// ===========================1 KUADTRILIUN===========================
+	else if(number == 1000000000000000){
+		var kalimat = 'Satu Kuadriliun';
 	}
 
 	var pisah = kalimat.split(' ');
@@ -124,3 +149,5 @@ console.log(numberToWords(9128456257));
 console.log(numberToWords(91284562572));
 console.log(numberToWords(912845625723));
 console.log(numberToWords(1000000000000));
+console.log(numberToWords(999500500500522));
+console.log(numberToWords(1000000000000000));
