@@ -73,19 +73,23 @@ function numberToWords(number) {
   }
   function isSpecialTZero(number){
     //console.log('number '+number);
-    if (number.toString()[0]!='0'){
-    switch ((number.toString().length-1)/3) {
-      case 1:
-        return 'ribu ';
-        break;
-      case 2:
-        return 'juta ';
-        break;
-      case 3:
-        return 'miliar '
-        break;
-      default:
-    }}
+    if (number.toString()[0]!=0){
+      switch ((number.toString().length-1)/3) {
+        case 1:
+          return 'ribu ';
+          break;
+        case 2:
+          return 'juta ';
+          break;
+        case 3:
+          return 'miliar '
+          break;
+        case 4:
+          return 'trilyun '
+          break;
+        default:
+      }
+    }
     return '';
   }
   specialCaseThreeZero += isSpecialTZero(number);
@@ -107,6 +111,25 @@ function numberToWords(number) {
     return processedNum[1]!=0 ? converter(parseInt(processedNum[1]), 'satuan')+'belas': 'sepuluh';
   }
 
+  if (number.toString().length == 6) {
+    if (number.toString()[2]==0){
+      return numberToWords(number.toString()[0]+number.toString()[1]+0) +numberToWords(number.toString()[3]+number.toString()[4]+number.toString()[5])
+    }else if (number.toString()[2]!=1){
+      return numberToWords(number.toString()[0]+number.toString()[1]+0)+' seribu '+numberToWords(number.toString()[3]+number.toString()[4]+number.toString()[5])
+    }else{
+      return numberToWords(number.toString()[0]+number.toString()[1]+number.toString()[2])+' ribu '+numberToWords(number.toString()[3]+number.toString()[4]+number.toString()[5])
+    }
+  }
+
+  if(number.toString().length == 5){
+    return numberToWords(number.toString()[0]+number.toString()[1])+'ribu '+numberToWords(number.toString()[2]+number.toString()[3]+number.toString()[4]);
+  }
+
+  if(number.toString().length==4){
+    if(number.toString()[0]=='1'){
+      return 'seribu '+numberToWords(number.toString()[1]+number.toString()[2]+number.toString()[3])
+    }
+  }
 
   return converter(parseInt(processedNum.shift()), posisi) +specialCaseThreeZero+ numberToWords(processedNum.join(''));
 
@@ -114,16 +137,21 @@ function numberToWords(number) {
 
 // Driver code
 console.log(numberToWords(1));
-console.log(numberToWords(45));
-console.log(numberToWords(18));
-console.log(numberToWords(999));
-console.log(numberToWords(300));
+console.log(numberToWords(10));
+console.log(numberToWords(11));
+console.log(numberToWords(20));
+console.log(numberToWords(100));
+console.log(numberToWords(211));
 console.log(numberToWords(1000));
-console.log(numberToWords(101001));
+console.log(numberToWords(11000));
+console.log(numberToWords(111000));
+console.log(numberToWords(1111000));
+console.log(numberToWords(1001));
+console.log(numberToWords(5001));
+console.log(numberToWords(51000));
 console.log(numberToWords(1000000));
-console.log(numberToWords(16));
-console.log(numberToWords(3325400040));
-//console.log(numberToWords(1000000));
+console.log(numberToWords(1000000000000));
+console.log(numberToWords(1234567897524));
 
 module.exports = {
   numberToWords: numberToWords
