@@ -11,21 +11,26 @@ function numberToWords(number) {
     [9,"sembilan"]
   ]
   var pisah = number.toString().split("");
+  var hasil = "";
   console.log(arr[0][0])
   for(var i = 0; i < arr.length; i++){
     console.log(arr[i][0]);
     if(number === arr[i][0]){
-      return arr[i][1];
+      hasil = arr[i][1];
     }
-    if(number > 10 && number < 20 && parseInt(pisah[0]) === arr[i][0]){
-      return arr[i][1] + " belas"
+    if(number > 10 && number < 20 && parseInt(pisah[1]) === arr[i][0]){
+      hasil = arr[i][1] + " belas"
+    }
+    if(number > 20 && number < 100 && parseInt(pisah[0]) === arr[i][0]){
+      hasil = arr[i][1] + " puluh " + arr[pisah[1]-1][1]
     }
   }
+  return hasil
 }
 
 // Driver code
 // console.log(numberToWords(1000000));
-console.log(numberToWords(12))
+console.log(numberToWords(54))
 
 module.exports = {
   numberToWords: numberToWords
