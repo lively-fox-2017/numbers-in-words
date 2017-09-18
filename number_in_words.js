@@ -1,6 +1,7 @@
 function numberToWords(number) {
   // Your code here
   const angka={
+  	'0': '',
   	'1': 'Satu',
   	'2': 'Dua',
   	'3': 'Tiga',
@@ -16,7 +17,7 @@ function numberToWords(number) {
 
   let temp=0;
 
-  	if(number>0 && number<=11){
+  	if(number>=0 && number<=11){
   		return angka[number.toString()];
   	}
 
@@ -30,15 +31,44 @@ function numberToWords(number) {
   		return angka[temp.toString()]+' puluh '+numberToWords(number%10);
   	}
 
-  	if(number>=100 && number <1000){
+  	if(number>=100 && number<200){
+  		return 'Seratus '+numberToWords(number%100);
+  	}
+
+  	if(number>=200 && number <1000){
   		temp=Math.floor(number/100);
   		return angka[temp.toString()]+' ratus '+numberToWords(number%100);
   	}
+
+  	if(number>=1000 && number<2000){
+  		return 'Seribu '+numberToWords(number%100);
+  	}
+
+  	if(number>=2000 && number<1000000){
+  		temp=Math.floor(number/1000);
+  		return numberToWords(temp)+' ribu '+numberToWords(number-(temp*1000));
+  	}
+
+  	if(number>=1000000 && number<1000000000){
+  		temp=Math.floor(number/1000000);
+  		return numberToWords(temp)+' juta '+numberToWords(number-(temp*1000000));
+  	}
+
+	if(number>=1000000000 && number<1000000000000){
+  		temp=Math.floor(number/1000000);
+  		return numberToWords(temp)+' Miliyar '+numberToWords(number-(temp*1000000));
+  	}
+
+  	if(number>=1000000000000 && number<1000000000000000){
+  		temp=Math.floor(number/1000000000000);
+
+  		return temp.toString()+' Triliun '+numberToWords(number-(temp*1000000000000));
+  	}  	
 }
 
 // Driver code
-console.log(numberToWords(999));
-
+console.log(numberToWords(164));
+//9000.000.000.000
 module.exports = {
   numberToWords: numberToWords
 }
