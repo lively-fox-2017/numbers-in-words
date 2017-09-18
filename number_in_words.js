@@ -1,4 +1,4 @@
-function numberToWords(number) {
+function numberToWords2(number) {
   // Your code here
   var sebut = ["", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas"];
   
@@ -25,6 +25,15 @@ function numberToWords(number) {
   } 
 }
 
+function numberToWords(number){
+	// Your code here
+	if(number === 0){
+		return "nol";
+	}else{
+		return numberToWords2(number);
+	}
+}
+
 // Driver code
 // console.log(numberToWords(1000000));
 
@@ -33,6 +42,7 @@ function numberToWords(number) {
 // }
 
 //Test Case
+console.log(numberToWords(0));
 console.log(numberToWords(4));
 console.log(numberToWords(14));
 console.log(numberToWords(27));
