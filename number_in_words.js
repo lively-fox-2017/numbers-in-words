@@ -100,7 +100,9 @@ function numberToWords(number) {
   var processedNum = number.toString().split('');
   if(processedNum.length==1){
     return converter(parseInt(processedNum.shift()), posisi);
-  }else if(processedNum.length == 2 && processedNum[0]==1){
+  }
+
+  if(processedNum.length == 2 && processedNum[0]==1){
     if (processedNum[1]==0){
       return 'sepuluh';
     }else if (processedNum[1]==1) {
@@ -109,6 +111,33 @@ function numberToWords(number) {
       return converter(parseInt(processedNum[1]), 'satuan')+'belas'
     }
     return processedNum[1]!=0 ? converter(parseInt(processedNum[1]), 'satuan')+'belas': 'sepuluh';
+  }
+
+  if(processedNum.length%3 == 2  && processedNum[0]==1){
+    var res = '';
+    var temp =number.toString().split('');
+    temp.shift();
+    var plusSpec = isSpecialTZero(parseInt(temp.join('')));
+    if (processedNum[1]==0){
+      res = 'sepuluh';
+      processedNum.shift();
+      processedNum.shift();
+      res += plusSpec+numberToWords(processedNum.join(''))
+      return res;
+    }else if (processedNum[1]==1) {
+      res = 'sebelas'
+      processedNum.shift();
+      processedNum.shift();
+      res+= plusSpec+numberToWords(processedNum.join(''));
+      return res;
+    }else{
+      res = converter(parseInt(processedNum[1]), 'satuan')+'belas ';
+      processedNum.shift();
+      processedNum.shift();
+      res+=plusSpec+numberToWords(processedNum.join(''));
+      return res;
+    }
+    //return processedNum[1]!=0 ? converter(parseInt(processedNum[1]), 'satuan')+'belas': 'sepuluh';
   }
 
   if (number.toString().length == 6) {
@@ -152,6 +181,8 @@ console.log(numberToWords(51000));
 console.log(numberToWords(1000000));
 console.log(numberToWords(1000000000000));
 console.log(numberToWords(1234567897524));
+console.log(numberToWords(11111111));
+console.log(numberToWords(1111111111111));
 
 module.exports = {
   numberToWords: numberToWords
