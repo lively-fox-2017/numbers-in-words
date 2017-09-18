@@ -1,6 +1,8 @@
 function numberToWords(number) {
   // Your code here
-
+  if(number >= 1000) {
+    return 'seribu' + numberToWords(number % 1000)
+  }
 
   if(number >= 200) {
     return numberToWords(parseInt(number / 100)) + ' ratus ' + numberToWords(number % 100)
